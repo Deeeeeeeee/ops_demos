@@ -1,0 +1,3 @@
+# redis data file
+*.rdb
+*.aof

@@ -1,0 +1,22 @@
+version: '3.0'
+services:
+  redis-6380-master:
+    image: redis
+    container_name: redis-6380-master
+    ports:
+      - "6380:6379"
+    volumes:
+      - ./redis6380.conf:/etc/redis/redis.conf
+      - ./6380data:/data
+    privileged: true
+    command: redis-server /etc/redis/redis.conf
+  redis-6381-slave:
+    image: redis
+    container_name: redis-6381-slave
+    ports:
+      - "6381:6379"
+    volumes:
+      - ./redis6381.conf:/etc/redis/redis.conf
+      - ./6381data:/data
+    privileged: true
+    command: redis-server /etc/redis/redis.conf
