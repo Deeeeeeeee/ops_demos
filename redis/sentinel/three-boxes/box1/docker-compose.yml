@@ -1,0 +1,21 @@
+version: '3.0'
+services:
+  redis-6380-boxes1:
+    image: redis
+    container_name: redis-6380-boxes1
+    ports:
+      - "6380:6380"
+    volumes:
+      - ./redis6380.conf:/etc/redis/redis.conf
+    privileged: true
+    command: redis-server /etc/redis/redis.conf
+    
+  sentinel-6380-boxes1:
+    image: redis
+    container_name: sentinel-6380-boxes1
+    ports:
+      - "26380:26380"
+    volumes:
+      - ./sentinel26380.conf:/etc/redis/sentinel.conf
+    privileged: true
+    command: redis-server /etc/redis/sentinel.conf --sentinel

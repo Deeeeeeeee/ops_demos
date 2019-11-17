@@ -1,0 +1,21 @@
+version: '3.0'
+services:
+  redis-6382-boxes3:
+    image: redis
+    container_name: redis-6382-boxes3
+    ports:
+      - "6382:6382"
+    volumes:
+      - ./redis6382.conf:/etc/redis/redis.conf
+    privileged: true
+    command: redis-server /etc/redis/redis.conf
+    
+  sentinel-6382-boxes3:
+    image: redis
+    container_name: sentinel-6382-boxes3
+    ports:
+      - "26382:26382"
+    volumes:
+      - ./sentinel26382.conf:/etc/redis/sentinel.conf
+    privileged: true
+    command: redis-server /etc/redis/sentinel.conf --sentinel
